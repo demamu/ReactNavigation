@@ -7,8 +7,9 @@ import Stars from 'components/Stars';
 
 const Course = ({ data }) => {
   const { index, title, faculty, code, rating } = data;
+  const {navigate} = useNavigation();
 
-  const infoPressed = () => { };
+  const infoPressed = () => {navigate('COURSE_DETAILS',{course:data})};
 
   return (
     <View

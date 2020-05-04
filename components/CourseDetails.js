@@ -1,22 +1,31 @@
 import React from 'react';
+import { ScrollView, Text, View, TouchableOpacity } from 'react-native';
 
-import {
-  StyleSheet,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
+import Stars from 'components/Stars';
 
+const CourseDetails = ({ route: { params },navigation:{navigate} }) => {
+  const course = params.course;
 
-const CourseDetails = () => {
+  const addReview = () => {
+    navigate('ADD_REVIEW',{course})
+  };
+
   return (
     <ScrollView style={styles.root}>
-      {/* <View style={styles.infoHeader}>
-        <Text style={styles.name}>{course.title}</Text>
-        <Text style={styles.faculty}>{course.code}</Text>
-        <Text style={styles.faculty}>{course.faculty}</Text>
-        <Stars rating={course.rating} />
-        <TouchableOpacity style={styles.button} onPress={addReview}>
-          <Text style={styles.buttonText}>Add Review</Text>
-        </TouchableOpacity>
-      </View> */}
+      <View>
+        <View style={styles.infoHeader}>
+          <View>
+            <Text style={styles.name}>{course.title}</Text>
+            <Text style={styles.faculty}>{course.code}</Text>
+            <Text style={styles.faculty}>{course.faculty}</Text>
+            <Stars rating={course.rating} />
+            <TouchableOpacity style={styles.button} onPress={addReview}>
+              <Text style={styles.buttonText}>Add Review</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
     </ScrollView>
   );
 };
@@ -27,8 +36,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   infoHeader: {
-    flexDirection: 'row',
-    padding: 20
+    // flexDirection: 'row',
+    padding: 20,
   },
   info: {
     marginTop: 20,
